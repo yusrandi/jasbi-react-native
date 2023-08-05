@@ -47,7 +47,7 @@ export default function HomeScreen({ navigation }: TabsStackScreenProps<"home">)
 
     async function kategorisFromApi() {
         const kategoriResponse: KategoriTypeResponse = await KategoriApi()
-        console.log({ kategoriResponse });
+        // console.log({ kategoriResponse });
         const listKategori: KategoriType[] = kategoriResponse.responsedata
         setKategoris(listKategori)
         setKategori(listKategori[0])
@@ -57,7 +57,7 @@ export default function HomeScreen({ navigation }: TabsStackScreenProps<"home">)
     async function productsFromApi() {
         const response: ProductTypeResponse = await ProductApi()
         setProducts(response.responsedata)
-        console.log({ response });
+        // console.log({ response });
     }
     function Header() {
         return (
@@ -286,7 +286,7 @@ export default function HomeScreen({ navigation }: TabsStackScreenProps<"home">)
                 <StatusBar style={'auto'} />
                 <View style={{ height: 10 }}></View>
                 <Header />
-                <SearchBar />
+                {/* <SearchBar /> */}
                 {/* <CollectionView /> */}
                 <CategorySection />
                 <HomeProduct kategori={kategori} listProduct={products.filter((value: ProductType) => value.kategoriId === kategori.id)} navigation={navigation} />

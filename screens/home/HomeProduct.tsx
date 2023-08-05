@@ -152,7 +152,7 @@ export default function HomeProduct({ kategori, listProduct, navigation }: props
                                                             customerId: userContext.id,
                                                             qty: 1,
                                                             total: item.price,
-                                                            file: '',
+                                                            file: 'image',
                                                             status: 'KERANJANG'
 
                                                         } as TransaksiType)

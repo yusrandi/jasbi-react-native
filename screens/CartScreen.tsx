@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, Image, FlatList, RefreshControl } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { RootStackScreenProps } from '../navigators/RootNavigator'
@@ -27,6 +27,7 @@ export default function CartScreen({ navigation }: RootStackScreenProps<"cart">)
     const [transaksi, setTransaksi] = useState<TransaksiType>({} as TransaksiType)
 
     const [isModalOpen, setModalStatus] = useState(false);
+    const [refreshing, setRefreshing] = useState(true);
 
 
     useEffect(() => {
@@ -36,6 +37,7 @@ export default function CartScreen({ navigation }: RootStackScreenProps<"cart">)
         const dataResponse: TransaksiTypeResponse = await TransaksiApi()
         console.log({ dataResponse });
         setTransaksis(dataResponse.responsedata.filter((data: TransaksiType) => data.customerId === userContext.id && data.status === 'KERANJANG'))
+        setRefreshing(false);
     }
 
 
@@ -72,7 +74,6 @@ export default function CartScreen({ navigation }: RootStackScreenProps<"cart">)
                         </Text>
 
                     </View>
-
                 </View>
             </View>
         )
@@ -127,6 +128,9 @@ export default function CartScreen({ navigation }: RootStackScreenProps<"cart">)
                     data={transaksis}
                     keyExtractor={item => item.id.toString()}
                     showsVerticalScrollIndicator={false}
+                    refreshControl={
+                        <RefreshControl refreshing={refreshing} onRefresh={getData} />
+                    }
                     contentContainerStyle={{
                         paddingVertical: Spacing * 3,
                         paddingHorizontal: Spacing,

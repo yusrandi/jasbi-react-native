@@ -255,7 +255,7 @@ export default function PaymentDetailScreen({ navigation, route: {
 
         let formData = new FormData();
         formData.append('status', "DIPESAN");
-        formData.append('imageName', transaksi.file);
+        formData.append('imageName', filename);
         formData.append('myImage', photo);
         formData.append('qty', "1")
         formData.append('total', (transaksi.product.price * 1).toString())
@@ -309,14 +309,14 @@ export default function PaymentDetailScreen({ navigation, route: {
 
                     </View>
                     <View style={[styles.mainCardView, { marginTop: Spacing, gap: Spacing }]}>
-                        <Text style={{ fontFamily: Font['poppins-semiBold'], marginBottom: Spacing / 2 }} >Transfer to</Text>
+                        <Text style={{ fontFamily: Font['poppins-semiBold'], marginBottom: Spacing / 2 }} >Transfer to DANA</Text>
                         <View style={{ borderBottomColor: 'grey', borderBottomWidth: 0.2, paddingBottom: Spacing }}>
-                            <Text style={{ fontSize: FontSize.small, color: 'grey', fontFamily: Font['poppins-regular'] }} >Nomor Rekening</Text>
-                            <Text style={{ fontSize: FontSize.small, fontFamily: Font['poppins-semiBold'] }}>12345678909302</Text>
+                            <Text style={{ fontSize: FontSize.small, color: 'grey', fontFamily: Font['poppins-regular'] }} >an. Fahrizzah Munawwir Maita</Text>
+                            <Text style={{ fontSize: FontSize.small, fontFamily: Font['poppins-semiBold'] }}>082199970502</Text>
                         </View>
                         <View style={{ paddingBottom: Spacing }}>
                             <Text style={{ fontSize: FontSize.small, color: 'grey', fontFamily: Font['poppins-regular'] }} >Total Pembayaran</Text>
-                            <Text style={{ fontSize: FontSize.small, fontFamily: Font['poppins-semiBold'] }}>{currencyFormatter(750000)}</Text>
+                            <Text style={{ fontSize: FontSize.small, fontFamily: Font['poppins-semiBold'] }}>Rp. {currencyFormatter(transaksi.total)}</Text>
                         </View>
 
 

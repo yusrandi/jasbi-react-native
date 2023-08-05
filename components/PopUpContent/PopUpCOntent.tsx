@@ -11,7 +11,7 @@ interface props {
 export default function PopUpCOntent({ pressAction, pressYesAction, subTitle }: props) {
     return (
         <View style={styles.popupContent}>
-            <Image source={require('../../assets/images/happy.png')} style={styles.popupImage} />
+            <Image source={require('../../assets/images/thinking.png')} style={styles.popupImage} />
             <View style={styles.popupTextContainer}>
                 <Text style={styles.popupHeading}>Dialog Confirm!</Text>
                 <Text style={styles.popupDescriptionText}>

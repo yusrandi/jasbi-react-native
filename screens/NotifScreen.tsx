@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image, RefreshControl } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useTheme } from '@react-navigation/native'
 import { CustomDefaultTheme } from '../themes/AppThemes'
@@ -17,6 +17,8 @@ export default function NotifScreen() {
     const { colors } = useTheme()
     const { userContext } = useContext(AuthContext)
     const [notifikasis, setNotifikasis] = useState<NotifType[]>([])
+    const [refreshing, setRefreshing] = useState(true);
+
 
     useEffect(() => {
         getNotifikasi()
@@ -25,6 +27,7 @@ export default function NotifScreen() {
         const notifResponse: NotifTypeResponse = await NotifikasiApi(userContext.id)
         console.log({ notifResponse });
         setNotifikasis(notifResponse.responsedata)
+        setRefreshing(false)
     }
 
 
@@ -34,6 +37,9 @@ export default function NotifScreen() {
                 data={notifikasis}
                 keyExtractor={item => item.id.toString()}
                 showsVerticalScrollIndicator={false}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={getNotifikasi} />
+                }
                 contentContainerStyle={{
                     paddingVertical: Spacing * 5,
                     paddingHorizontal: Spacing

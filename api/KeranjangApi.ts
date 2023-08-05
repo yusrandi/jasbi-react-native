@@ -17,14 +17,14 @@ export const KeranjangApi = async (transaksi: TransaksiType): Promise<TransaksiT
                 'content-type':"application/json"
             },
             data: {
-                imageName: "image",
+                imageName: transaksi.file,
                 myImage: "",
-                status: "KERANJANG",
+                status: transaksi.status,
                 qty: transaksi.qty,
                 total: transaksi.total,
                 customerId: transaksi.customerId,
                 productId: transaksi.productId,
-                id: 0,
+                id: transaksi.id,
             }
         }).then(function (response){
             // console.log(response);

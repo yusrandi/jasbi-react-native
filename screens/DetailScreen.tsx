@@ -248,7 +248,7 @@ export default function DetailScreen({
                         </View>
                     </View>
 
-                    <View>
+                    {/* <View>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text
                                 style={{
@@ -299,7 +299,7 @@ export default function DetailScreen({
                                 </TouchableOpacity>
                             ))}
                         </View>
-                    </View>
+                    </View> */}
 
                     <View>
                         <Text
